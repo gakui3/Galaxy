@@ -4,6 +4,7 @@ import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 
 class Planet {
   gm = 132712752000;
+  rotate = 0;
 
   constructor (params) {
     this.params = params;
@@ -138,6 +139,14 @@ class Planet {
       window.scene.add(this.lineMesh);
       this.timer = 0;
     }
+
+    this.rotate += this.params.rotate * dt;
+    const m0 = new THREE.Matrix4();
+    const m1 = new THREE.Matrix4();
+    m0.makeRotationY(this.rotate);
+    m1.makeRotationX(0.45);
+    m1.multiply(m0);
+    this.planet.rotation.setFromRotationMatrix(m1);
   }
 }
 

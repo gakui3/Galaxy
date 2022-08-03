@@ -12,6 +12,7 @@ const mercury = {
   texturePath: "./assets/textures/Mercury_1k.png",
   lineColor: 0xdeb887,
   isCalculate: true,
+  rotate: 0.00000124001,
 };
 
 const venus = {
@@ -28,6 +29,7 @@ const venus = {
   texturePath: "./assets/textures/Venus_1k.png",
   lineColor: 0xffd700,
   isCalculate: true,
+  rotate: -0.00000029924,
 };
 
 const earth = {
@@ -44,6 +46,7 @@ const earth = {
   texturePath: "./assets/textures/Earth_1k.png",
   lineColor: 0x00fa9a,
   isCalculate: true,
+  rotate: 0.00007292115,
 };
 
 const mars = {
@@ -60,6 +63,7 @@ const mars = {
   texturePath: "./assets/textures/Mars_1k.png",
   lineColor: 0xff4500,
   isCalculate: true,
+  rotate: 0.0000708822,
 };
 
 const jupiter = {
@@ -76,6 +80,7 @@ const jupiter = {
   texturePath: "./assets/textures/Jupiter_1k.png",
   lineColor: 0x00ff7f,
   isCalculate: true,
+  rotate: 0.00017585,
 };
 
 const saturn = {
@@ -92,6 +97,7 @@ const saturn = {
   texturePath: "./assets/textures/Saturn_1k.png",
   lineColor: 0xffebcd,
   isCalculate: true,
+  rotate: 0.000163785,
 };
 
 const uranus = {
@@ -108,6 +114,7 @@ const uranus = {
   texturePath: "./assets/textures/Uranus_1k.png",
   lineColor: 0x00ffff,
   isCalculate: true,
+  rotate: -0.000101237,
 };
 
 const neptune = {
@@ -124,6 +131,7 @@ const neptune = {
   texturePath: "./assets/textures/Neptune_1k.png",
   lineColor: 0x00bfff,
   isCalculate: true,
+  rotate: 0.000108338,
 };
 
 const sun = {
@@ -140,6 +148,7 @@ const sun = {
   texturePath: "./assets/textures/Sun_1k.png",
   lineColor: 0x00bfff,
   isCalculate: false,
+  rotate: 0.00007292115,
 };
 
 export { earth, mercury, mars, venus, jupiter, saturn, uranus, neptune, sun };
