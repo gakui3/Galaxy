@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { MeshLine, MeshLineMaterial } from "three.meshline";
 
 class Planet {
   constructor (params) {
@@ -9,6 +10,19 @@ class Planet {
     this.mesh = new THREE.Mesh(geom, new THREE.MeshBasicMaterial());
     this.name = params.name;
     this.mass = params.mass;
+    this.lineMesh = new THREE.Object3D();
+    this.timer = 0;
+
+    this.points = [];
+
+    this.lineMaterial = new MeshLineMaterial({
+      useMap: false,
+      color: new THREE.Color(1, 0, 0),
+      opacity: 1,
+      resolution: new THREE.Vector2(window.canvas.clientWidth, window.canvas.clientHeight),
+      sizeAttenuation: false,
+      lineWidth: 10,
+    });
   }
 
   gm = 132712752000;
@@ -63,6 +77,22 @@ class Planet {
     const projection = viewPosition.applyMatrix4(camera.projectionMatrix);
     const sx = (canvas.clientWidth / 2) * (projection.x + 1.0);
     const sy = (canvas.clientHeight / 2) * (-projection.y + 1.0);
+
+    this.timer += 0.03;
+    if (this.timer > 0.5) {
+      this.points.unshift(_p);
+      if (this.points.length > 200) {
+        this.points.pop();
+      }
+      window.scene.remove(this.lineMesh);
+
+      const geometry = new THREE.BufferGeometry().setFromPoints(this.points);
+      const line = new MeshLine();
+      line.setGeometry(geometry, p => 1.0 - p);
+      this.lineMesh = new THREE.Mesh(line, this.lineMaterial);
+      window.scene.add(this.lineMesh);
+      this.timer = 0;
+    }
 
     const parent = document.getElementById(this.name);
     parent.innerHTML = `${this.name}:  ${Math.round(sx)}, ${Math.round(sy)}<br>mass: ${this.mass}`;

@@ -18,12 +18,15 @@ const param = {
 
 function init () {
   canvas = document.querySelector("#c");
-  renderer = new THREE.WebGLRenderer({ canvas });
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
   window.renderer = renderer;
   document.body.appendChild(renderer.domElement);
   scene = new THREE.Scene();
   clock = new THREE.Clock();
   clock.start();
+
+  window.scene = scene;
+  window.canvas = canvas;
 }
 
 function addCamera () {
