@@ -4,7 +4,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import testVert from "./shaders/test.vert";
 import testFrag from "./shaders/test.frag";
 import Planet from "./planet.js";
-import { earth, mercury, mars, venus, jupiter, saturn, uranus, neptune } from "./planetParams.js";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+import { earth, mercury, mars, venus, jupiter, saturn, uranus, neptune, sun } from "./planetParams.js";
 
 let canvas, renderer, scene, camera, gui, clock;
 const planets = [];
@@ -24,6 +25,20 @@ function init () {
   scene = new THREE.Scene();
   clock = new THREE.Clock();
   clock.start();
+
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1, 100);
+  directionalLight.position.set(-1, 4, -0.5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  scene.add(new THREE.AmbientLight(0x404040, 5));
+  directionalLight.shadow.mapSize.width = 4096; // default
+  directionalLight.shadow.mapSize.height = 4096; // default
+  directionalLight.shadow.camera.near = 0.05; // default
+  directionalLight.shadow.camera.far = 100; // default
+  directionalLight.shadow.camera.bottom = -15;
+  directionalLight.shadow.camera.top = 15;
+  directionalLight.shadow.camera.left = -15;
+  directionalLight.shadow.camera.right = 15;
 
   window.scene = scene;
   window.canvas = canvas;
@@ -49,10 +64,28 @@ function addObject () {
   planets.push(new Planet(saturn));
   planets.push(new Planet(uranus));
   planets.push(new Planet(neptune));
+  planets.push(new Planet(sun));
 
-  for (let i = 0; i < planets.length; i++) {
-    scene.add(planets[i].mesh);
-  }
+  // add sun
+  // const texture = new THREE.TextureLoader().load("./assets/textures/Sun_1k.png");
+  // const fbxLoader = new FBXLoader();
+
+  // fbxLoader.load("./assets/3dmodels/Sun.fbx", (obj) => {
+  //   const mat = new THREE.MeshPhongMaterial({ map: texture });
+  //   mat.skinning = true;
+
+  //   obj.traverse((child) => {
+  //     if (child.isMesh) {
+  //       child.castShadow = true;
+  //       child.receiveShadow = true;
+
+  //       child.material = mat;
+  //     }
+  //   });
+  //   const scale = 0.01 * 3.0;
+  //   obj.scale.set(scale, scale, scale);
+  //   scene.add(obj);
+  // });
 }
 
 function addGUI () {
@@ -85,7 +118,7 @@ function update () {
 
   const dt = clock.getDelta() * 100000;
   for (let i = 0; i < planets.length; i++) {
-    planets[i].update(dt, camera);
+    planets[i].update(dt);
   }
 
   renderer.render(scene, camera);

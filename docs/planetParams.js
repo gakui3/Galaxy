@@ -5,8 +5,13 @@ const mercury = {
   vx: 3.665298704187096E+01,
   vz: -1.228983806940175E+01,
   vy: -4.368173036243590E+00,
-  mass: 1000000,
+  scaleRate: 0.8,
+  mass: "0.330*10^24(kg)",
   name: "mercury",
+  modelPath: "./assets/3dmodels/Mercury.fbx",
+  texturePath: "./assets/textures/Mercury_1k.png",
+  lineColor: 0xdeb887,
+  isCalculate: true,
 };
 
 const venus = {
@@ -16,8 +21,13 @@ const venus = {
   vx: 8.891597859686224E-01,
   vz: -3.515920774137907E+01,
   vy: -5.318594228644749E-01,
-  mass: 1000000,
+  scaleRate: 1.2,
+  mass: "4.87*10^24(kg)",
   name: "venus",
+  modelPath: "./assets/3dmodels/Venus.fbx",
+  texturePath: "./assets/textures/Venus_1k.png",
+  lineColor: 0xffd700,
+  isCalculate: true,
 };
 
 const earth = {
@@ -27,8 +37,13 @@ const earth = {
   vx: -2.983983333677879E+01,
   vz: -5.207633902410673E+00,
   vy: 6.168441184239981E-05,
-  mass: 1000000,
+  scaleRate: 1.2,
+  mass: "5.97*10^24(kg)",
   name: "earth",
+  modelPath: "./assets/3dmodels/Earth.fbx",
+  texturePath: "./assets/textures/Earth_1k.png",
+  lineColor: 0x00fa9a,
+  isCalculate: true,
 };
 
 const mars = {
@@ -38,8 +53,13 @@ const mars = {
   vx: 1.295003532851602E+00,
   vz: 2.629442067068712E+01,
   vy: 5.190097267545717E-01,
-  mass: 1000000,
+  scaleRate: 1.0,
+  mass: "0.642*10^24(kg)",
   name: "mars",
+  modelPath: "./assets/3dmodels/Mars.fbx",
+  texturePath: "./assets/textures/Mars_1k.png",
+  lineColor: 0xff4500,
+  isCalculate: true,
 };
 
 const jupiter = {
@@ -49,8 +69,13 @@ const jupiter = {
   vx: -7.901937516136118E+00,
   vz: 1.116317703172796E+01,
   vy: 1.306732148714280E-01,
-  mass: 1000000,
+  scaleRate: 4.0,
+  mass: "1898*10^24(kg)",
   name: "jupiter",
+  modelPath: "./assets/3dmodels/Jupiter.fbx",
+  texturePath: "./assets/textures/Jupiter_1k.png",
+  lineColor: 0x00ff7f,
+  isCalculate: true,
 };
 
 const saturn = {
@@ -60,8 +85,13 @@ const saturn = {
   vx: -7.428885680409909E+00,
   vz: 6.738814240733793E+00,
   vy: 1.776643606866641E-01,
-  mass: 1000000,
+  scaleRate: 4.0,
+  mass: "568*10^24(kg)",
   name: "saturn",
+  modelPath: "./assets/3dmodels/Saturn.fbx",
+  texturePath: "./assets/textures/Saturn_1k.png",
+  lineColor: 0xffebcd,
+  isCalculate: true,
 };
 
 const uranus = {
@@ -71,8 +101,13 @@ const uranus = {
   vx: 4.637648534301329E+00,
   vz: 4.627193109110802E+00,
   vy: -4.285052612262108E-02,
-  mass: 1000000,
+  scaleRate: 2.8,
+  mass: "86.8*10^24(kg)",
   name: "uranus",
+  modelPath: "./assets/3dmodels/Uranus.fbx",
+  texturePath: "./assets/textures/Uranus_1k.png",
+  lineColor: 0x00ffff,
+  isCalculate: true,
 };
 
 const neptune = {
@@ -82,8 +117,29 @@ const neptune = {
   vx: 4.465682523947062E+00,
   vz: 3.076493760667651E+00,
   vy: -1.657059897537549E-01,
-  mass: 1000000,
+  scaleRate: 2.8,
+  mass: "102*10^24(kg)",
   name: "neptune",
+  modelPath: "./assets/3dmodels/Neptune.fbx",
+  texturePath: "./assets/textures/Neptune_1k.png",
+  lineColor: 0x00bfff,
+  isCalculate: true,
 };
 
-export { earth, mercury, mars, venus, jupiter, saturn, uranus, neptune };
+const sun = {
+  x: 0,
+  z: 0,
+  y: 0,
+  vx: 0,
+  vz: 0,
+  vy: 0,
+  scaleRate: 3.5,
+  mass: "1988500*10^24(kg)",
+  name: "sun",
+  modelPath: "./assets/3dmodels/Sun.fbx",
+  texturePath: "./assets/textures/Sun_1k.png",
+  lineColor: 0x00bfff,
+  isCalculate: false,
+};
+
+export { earth, mercury, mars, venus, jupiter, saturn, uranus, neptune, sun };
