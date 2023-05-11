@@ -6,3 +6,5 @@ watch
 
 build  
 `npm run build`  
+
+https://galaxy-ar.web.app/
